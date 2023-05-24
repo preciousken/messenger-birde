@@ -11,3 +11,7 @@
   ```js
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   ```
+
+- User can get the location of the user
+- Get number of time viewed by a single  ipAddress
+- You are using the linkshortener approach though you are not to shorten or redirect user.
