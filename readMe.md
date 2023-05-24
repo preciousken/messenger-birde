@@ -34,4 +34,37 @@ if (navigator.geolocation) {
     });
   });
 }
+
+
+
+// Server-side JavaScript
+const express = require('express');
+const bodyParser = require('body-parser');
+const mapquestGeocoding = require('mapquest-geocoding');
+
+const app = express();
+app.use(bodyParser.json());
+
+// MapQuest Geocoding configuration
+const MAPQUEST_API_KEY = 'YOUR_MAPQUEST_API_KEY';
+mapquestGeocoding.init(MAPQUEST_API_KEY);
+
+app.post('/location', (req, res) => {
+  const { latitude, longitude } = req.body;
+
+  // Reverse geocoding to get location details
+  mapquestGeocoding.reverse(latitude, longitude, (err, location) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json(location);
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
 ```
+
