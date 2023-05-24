@@ -15,3 +15,23 @@
 - User can get the location of the user
 - Get number of time viewed by a single  ipAddress
 - You are using the linkshortener approach though you are not to shorten or redirect user.
+
+## The concept needed to know the location of a user
+
+  - ```js
+  // Client-side JavaScript
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    // Send the latitude and longitude to the server
+    fetch('/location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ latitude, longitude }),
+    });
+  });
+}
+    ```
