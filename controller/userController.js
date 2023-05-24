@@ -14,11 +14,6 @@ const registerUser = async (req, res) => {
         const body = req.body;
 
 
-
-        // manually give the dateofbirth
-        // body.dateOfBirth = new Date(Date.now())
-
-
         // checking for error in the form data
         if (!body.email) {
             error = 'DATA_ERROR';
@@ -105,30 +100,6 @@ const registerUser = async (req, res) => {
         }
 
 
-   
-
-        // query the database if the topics (interestIds) exist in the Database
-        // const checker = []
-        // const data = ["646271b444248aaa6138fe7e", "646275352e144f86a6f13bec", "646393def4bc2c7a6c6b38c2"]
-        // data.forEach(async data => {
-        //     let exist = await SubTip.findById(data)
-        //     // if (!exist) {
-        //     //     error = 'DATA_ERROR';
-        //     //     res.status(401).json({
-        //     //         status: false,
-        //     //         message: "You've got some errors, Kindly provide valid topics of interest",
-        //     //         error: error,
-        //     //     });
-        //     //     return;
-        //     // }
-        //     if(exist !== null){
-        //         exist='true'
-        //     }
-        //     console.log(exist);
-        //     checker.push(await exist)
-        // });
-
-
         // add user to the database
 
         // hashing the password and saving to the db
@@ -141,12 +112,15 @@ const registerUser = async (req, res) => {
                 body.password = hash
                 const user = new User(body);
                 const savedUser = await user.save();
+                const filtered = savedUser.toObject();
 
-                
+                delete filtered.password;
+
+
                 res.status(200).json({
                     status: true,
                     message: "Signed Up successfully, Go and confirm your email",
-                    data: savedUser
+                    data: filtered
                 })
                 return;
             });
