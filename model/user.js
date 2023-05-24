@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
             required: true,
         },
         email: {
-            type: String, 
+            type: String,
         },
         pNumber: {
             type: String,
@@ -34,6 +34,10 @@ const userSchema = mongoose.Schema(
             required: true,
             default: false
         },
+        ipAddress: {
+            type: Array,
+            required:true,
+        }
 
     },
     { timestamps: true }

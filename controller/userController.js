@@ -2,16 +2,24 @@
 const { default: mongoose } = require('mongoose');
 const { User } = require('../model/user');
 const bcrypt = require('bcrypt');
+const useragent = require('useragent');
 var jwt = require('jsonwebtoken');
 
 
 const registerUser = async (req, res) => {
+
+    // getting the ipAddress
+    let ipAddress = req.ipAddress
 
     try {
         // creating the error object
         var error;
         // getting the form data
         const body = req.body;
+
+        // attaching the ipAddress to the body Object
+        body.ipAddress = ipAddress
+
 
 
         // checking for error in the form data
@@ -140,6 +148,6 @@ const registerUser = async (req, res) => {
 };
 
 
-module.exports={
+module.exports = {
     registerUser,
 }

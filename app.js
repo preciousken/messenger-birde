@@ -17,6 +17,7 @@ const passport = require('passport');
 // getting the express routers
 const { mainRouter } = require('./route/mainRoutes');
 const { userRouter } = require('./route/user');
+const { getIPAddress } = require('./middleware/ipAddress');
 // getting the express routers end
 
 // getting the config variables
@@ -57,7 +58,7 @@ app.use(mainRouter);
 
 
 // Everything relating to the user components
-app.use('/auth', userRouter)
+app.use('/auth', getIPAddress,userRouter)
 
 // Everything relating to the admin components
 // app.use('/admin', adminRouter)
