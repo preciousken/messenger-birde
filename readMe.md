@@ -18,7 +18,7 @@
 
 ## The concept needed to know the location of a user
 
-  - ```js
+```js
   // Client-side JavaScript
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -34,4 +34,4 @@ if (navigator.geolocation) {
     });
   });
 }
-    ```
+```
