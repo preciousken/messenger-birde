@@ -58,7 +58,7 @@ app.use(mainRouter);
 
 
 // Everything relating to the user components
-app.use('/auth', getIPAddress,userRouter)
+app.use('/auth', getIPAddress ,userRouter)
 
 // Everything relating to the admin components
 // app.use('/admin', adminRouter)

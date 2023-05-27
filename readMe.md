@@ -7,6 +7,7 @@
 - User can always return back to dashboard to share the file again before expiration
 - User will be notified when the file is delivered or viewed by the receiver
 - Save the IpAddress of people that view the file using the concept below
+- - you can secure your files for receiver to send a request to view so you can only grant permissions to people you decided to share file with. meaning not everyone can have access to your file
   
   ```js
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
