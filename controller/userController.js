@@ -74,9 +74,9 @@ const registerUser = async (req, res) => {
         }
 
         // making the form data case insensitive
-        body.email = body.email.toLowerCase();
+        body.email = body.email.trim().toLowerCase();
         body.fname = body.fname.toLowerCase();
-        body.username = body.username.toLowerCase();
+        body.username = body.username.trim().toLowerCase(); // add regEx to replace all space between with a  ""
 
 
         // check if he is already a user
